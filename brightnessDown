@@ -1,0 +1,7 @@
+#!/bin/bash
+
+current=$(xrandr --verbose | grep Brightness | awk '{print $2}')
+if [ $current == 0.0 ]; then
+	exit
+fi
+xrandr --output DP-2 --brightness $(echo $current - 0.1 | bc)
